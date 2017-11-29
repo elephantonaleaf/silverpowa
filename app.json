@@ -1,11 +1,15 @@
 {
   "pages":[
+    "pages/home/home",
+    "pages/choice/choice",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/recording_confim/recording_confirm",
+    "pages/recording/recording"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#00988D",
     "navigationBarTitleText": "find someone to talk to",
     "navigationBarTextStyle":"black"
   }

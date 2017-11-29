@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="choice">
+    <image class="round-button" src="../../imgs/microphone.png"></image>
+    <text>Do some recordings</text>
+  </view>
+  <view class="choice">
+    <image class="round-button" src="../../imgs/speaker.jpg"></image>
+    <text>Hear some stories</text>
+  </view>
+
+</view>
