@@ -1,0 +1,20 @@
+.round-button {
+  height: 150rpx;
+  width: 150rpx;
+  border-radius: 50%;
+
+}
+
+.choice {
+  height: 50vh;
+  width: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid;
+}
+
+.container {
+  padding: 0px;
+}

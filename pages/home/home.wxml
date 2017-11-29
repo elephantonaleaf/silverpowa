@@ -1,0 +1,6 @@
+<view class="container">
+  <image class="logo" background-size="cover" src="../../imgs/logo01.png"></image>
+  <text style="font-size: 35px; color: #00988D">Silverpowa</text>
+  <text style="font-size: 15px; color: #00988D; margin-top: 15rpx">Record your life, hear interesting lives</text>
+  <button class="button-primary" bindtap="clickButton">Explore Now</button>
+</view>

@@ -15,6 +15,11 @@ Page({
       url: '../logs/logs'
     })
   },
+  bindSubmit: function () {
+    wx.navigateTo({
+      url: '../recording/recording'
+    })
+  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

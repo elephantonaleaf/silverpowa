@@ -1,0 +1,22 @@
+.container {
+  padding-top: 150rpx;
+  background-color: #F6F6F6;
+}
+.content {
+  display: flex;
+  align-items: center;
+}
+
+
+.logo {
+  width: 400rpx;
+  height: 400rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.button-primary {
+  margin-top:120rpx;
+  opacity: 0%;
+  border: 2px solid #00988D;
+}
