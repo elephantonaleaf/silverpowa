@@ -1,0 +1,40 @@
+<view style="text-align:center">
+  <text style="font-size:30px; color:#FF4D7C">Top this week</text>
+</view>
+<view>
+  <view class="card">
+    <image class="userinfo-avatar" src="../../imgs/ned.jpeg"></image>
+    <view>
+      <text style="font-weight: bold">Ned Stark</text>
+      <text style="font-size: 15px">\nWhy I fail as king's hand</text>
+    </view>
+  </view>
+  <view class="card">
+    <image class="userinfo-avatar" src="../../imgs/tywin.jpeg"></image>
+    <view>
+      <text style="font-weight: bold">Tywin Lanister</text>
+      <text style="font-size: 15px">\nWhy I also fail as king's hand</text>
+    </view>
+  </view>
+   <view class="card">
+    <image class="userinfo-avatar" src="../../imgs/albus.jpeg"></image>
+    <view>
+      <text style="font-weight: bold">Albus Dumbledore</text>
+      <text style="font-size: 15px">\nWhy I am the greatest wizzard</text>
+    </view>
+  </view>
+  <view class="card">
+    <image class="userinfo-avatar" src="../../imgs/gandalf.jpeg"></image>
+    <view>
+      <text style="font-weight: bold">Gandalf</text>
+      <text style="font-size: 15px">\nYou know it's me</text>
+    </view>
+  </view>
+  <view class="card">
+    <image class="userinfo-avatar" src="../../imgs/karl.jpeg"></image>
+    <view>
+      <text style="font-weight: bold">Karl Marx</text>
+      <text style="font-size: 15px">\nYou guys all suck</text>
+    </view>
+  </view>
+</view>

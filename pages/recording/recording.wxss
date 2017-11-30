@@ -1,1 +1,25 @@
-/* pages/recording/recording.wxss */
+#myProgress {
+    width: 100%;
+    background-color: grey;
+}
+#myBar {
+    height: 30px;
+    background-color: green;
+}
+
+.timer {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin: 10px;
+}
+
+.time {
+  width: 100%;
+  /* line-height: 1em; */
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  left: 0;
+  display: block;
+}
