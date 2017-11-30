@@ -54,7 +54,7 @@ Page({
       }
       cxt_arc.beginPath();
       cxt_arc.setStrokeStyle('red')
-      cxt_arc.arc(150, 100, 50, that.data.startAngle, templeAngle);
+      cxt_arc.arc(150, 100, 70, that.data.startAngle, templeAngle);
       cxt_arc.stroke();
       cxt_arc.closePath();
       wx.drawCanvas({
@@ -109,11 +109,25 @@ Page({
       }
     })
   },
+  listenerPickerSelected: function (e) {
+    //改变index值，通过setData()方法重绘界面
+    this.setData({
+      index: e.detail.value
+    });
+  },
   
   /**
    * 页面的初始数据
    */
   data: {
+    array: ['Pick a topic you want to talk about',
+      'Whats your childhood like', 
+      'How did you maintein your marriage relationship', 
+      'How did you educate your son', 
+      'How did you educate your grandson', 
+      'How did you make your career choice'
+    ],
+    index: 0,
     width: 1,
     timeLeft: 60,
     // 开始角度

@@ -1,12 +1,15 @@
 <view class="page-container">
   <view class="topics">
-    <text>Choose a topic you want to talk about</text>
+    <picker mode="selector" range="{{array}}" 
+      value="{{index}}" bindchange="listenerPickerSelected">
+      <text>{{array[index]}}</text>
+    </picker>
   </view>
   <view class="timer"> 
     <view class="timer-content"> 
       <canvas style='width:300px;height:200px;'canvas-id="countDown"/>
       <view class="time">
-        <text>{{timeLeft}}s</text>
+        <text style="font-size:30px;">{{timeLeft}}s</text>
       </view>
     </view>
   </view>
