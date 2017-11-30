@@ -1,16 +1,34 @@
 {
   "pages":[
     "pages/home/home",
-    "pages/choice/choice",
     "pages/index/index",
+    "pages/choice/choice",
+    "pages/list_stories/list_stories",   
     "pages/logs/logs",
     "pages/recording_confim/recording_confirm",
+    "pages/my_likes/my_likes",
+    "pages/my_stories/my_stories",
     "pages/recording/recording"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#00988D",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "find someone to talk to",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "borderStyle": "black",
+    "list":[{
+      "pagePath": "pages/my_likes/my_likes",
+      "iconPath": "imgs/like.jpeg",
+      "text": "My likes"
+    },
+    {
+      "pagePath": "pages/my_stories/my_stories",
+      "iconPath": "imgs/book.png",
+      "text": "My Stories"
+    }
+    ]
   }
 }

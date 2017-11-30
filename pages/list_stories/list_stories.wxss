@@ -1,0 +1,12 @@
+.card {
+  display:flex;
+  margin: 10px;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}

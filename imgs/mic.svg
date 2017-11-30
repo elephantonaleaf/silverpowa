@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="133px" height="133px" viewBox="0 0 133 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="66.2" cy="66.6" r="66.2"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="mic">
+            <g id="XMLID_55_">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#E55934" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <g opacity="0.19" mask="url(#mask-2)" id="XMLID_139_" fill-rule="nonzero" fill="#070808">
+                    <g transform="translate(49.000000, 27.000000)">
+                        <polygon points="19.8 0.5 85.1 51.8 82.6 105.8 37.9 103.9 0.8 75 19.2 69.3"></polygon>
+                    </g>
+                </g>
+            </g>
+            <path d="M58,51.2 L79.1,51.2 L79.1,36.7 C79.1,36.7 78.7,27.5 68.8,27.5 C58.9,27.5 58.1,36.7 58.1,36.7 L58,51.2 Z" id="XMLID_280_" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M51.5,47.1 C51.5,47.1 51.5,47.1 51.5,47.1 L51.5,71.7 C51.5,71.7 51.7,84.9 68.2,84.9 C84.9,84.9 84.9,71.7 84.9,71.7 L84.9,47.1 C84.9,47.1 84.9,47.1 84.9,47.1 L81.8,47.1 C81.8,47.1 81.8,47.1 81.8,47.1 L81.8,70.2 C81.8,70.2 81.7,81.3 68.2,81.3 C62.2,81.3 59,78.7 57.3,76.1 C56,74.1 55.3,71.8 55.3,69.4 L55.3,47.1 C55.3,47.1 55.3,47.1 55.3,47.1 L51.5,47.1 Z" id="XMLID_277_" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M57.4,53.2 L79.8,53.2 L79.8,69.5 C79.8,69.5 80,78.8 68.6,78.8 C56.7,78.8 57.4,69.5 57.4,69.5 L57.4,53.2 L57.4,53.2 Z" id="XMLID_274_" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <rect id="XMLID_265_" fill="#FFFFFF" fill-rule="nonzero" x="66.6" y="84.2" width="3.7" height="11.5"></rect>
+            <path d="M49.8,102 L87.9,102 C87.9,102 70,86 49.8,102 Z" id="XMLID_256_" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M74.6,54.8 L77.7,54.8 L77.7,69 C77.7,69 76.8,77.1 69.1,77.2 C69.1,77.2 73.8,74.8 74.5,69.2 L74.6,54.8 Z" id="XMLID_253_" fill="#E55934" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

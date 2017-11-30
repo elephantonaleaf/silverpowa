@@ -1,15 +1,6 @@
-// pages/choice/choice.js
+// pages/my_likes/my_likes.js
 Page({
-  record: function () {
-    wx.navigateTo({
-      url: '../recording/recording'
-    })
-  },
-  list: function () {
-    wx.navigateTo({
-      url: '../list_stories/list_stories'
-    })
-  },
+
   /**
    * 页面的初始数据
    */
