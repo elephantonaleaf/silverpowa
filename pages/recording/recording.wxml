@@ -1,16 +1,39 @@
-<view class="timer"> 
-  <view style="display: inline; height: 300px; width: 100%">
-    
-    <canvas style='width:100%;height:200px;'canvas-id="countDown"/>
-    <view class="time">
-      <text>{{timeLeft}}s</text>
+<view class="page-container">
+  <view class="topics">
+    <text>Choose a topic you want to talk about</text>
+  </view>
+  <view class="timer"> 
+    <view class="timer-content"> 
+      <canvas style='width:300px;height:200px;'canvas-id="countDown"/>
+      <view class="time">
+        <text>{{timeLeft}}s</text>
+      </view>
     </view>
   </view>
+  <!-- <view id="myProgress">
+    <view id="myBar" style="width: {{width}}"></view>
+  </view> -->
+  <view class="button-box">
+    <button class="button-md" bindtap="startRecording">Start</button>
+    <button class="button-md" bindtap="stopRecording">Stop</button>
+    <button class="button-md" bindtap="playRecording">Play</button>
+    <button class="button-md" bindtap="playRecording">Save</button>
+  </view>
+  
+  <view class="navbar-bottom">
+    <view class="navbar-item">
+      <image class="navbar-icon" src="../../imgs/book.svg"></image>
+      <text>My Stories</text>
+    </view>
+    <view class="navbar-item">
+      <image class="navbar-icon" src="../../imgs/star.svg"></image>
+      <text>My likes</text>
+    </view>
+    <view class="navbar-item">
+      <image class="navbar-icon" src="../../imgs/setting.svg"></image>
+      <text>Settings</text>
+    </view>
+  </view>
+
 </view>
-<view id="myProgress">
-  <view id="myBar" style="width: {{width}}"></view>
-</view>
-<button bindtap="startRecording">Start</button>
-<button bindtap="stopRecording">Stop</button>
-<button bindtap="playRecording">Play</button>
-<button bindtap="playRecording">Save</button>
+

@@ -19,22 +19,68 @@
 var filePath;
 var timeStop = false;
 
-function move(that) {
-  var w = 1;
-  var id = setInterval(frame, 100);
-  function frame() {
-    if (w >= 100) {
-      clearInterval(id);
-    } else {
-      w++;
-      that.setData({
-        width: w + '%'
-      })
-    }
-  }
-}
+//this is what i was testing a moving bar
+// function move(that) {
+//   var w = 1;
+//   var id = setInterval(frame, 100);
+//   function frame() {
+//     if (w >= 100) {
+//       clearInterval(id);
+//     } else {
+//       w++;
+//       that.setData({
+//         width: w + '%'
+//       })
+//     }
+//   }
+// }
 Page({
   startRecording: function () {
+    var that = this;
+    that.setData({
+      timeLeft: 60
+    });
+    var cxt_arc = wx.createContext();
+    var endAngle = that.data.endAngle;
+    var xAngle = that.data.xAngle;
+    var templeAngle = that.data.startAngle;
+    var rander = function () {
+      if (templeAngle >= endAngle) {
+        return;
+      } else if (templeAngle + xAngle > endAngle) {
+        templeAngle = endAngle;
+      } else {
+        templeAngle += xAngle
+      }
+      cxt_arc.beginPath();
+      cxt_arc.setStrokeStyle('red')
+      cxt_arc.arc(150, 100, 50, that.data.startAngle, templeAngle);
+      cxt_arc.stroke();
+      cxt_arc.closePath();
+      wx.drawCanvas({
+        canvasId: 'countDown',
+        actions: cxt_arc.getActions()
+      });
+
+
+      // requestAnimationFrame(rander);
+    }
+    var time = 60;
+    var shit = setInterval(runTime, 1000);
+    function runTime() {
+      if (time == 0 || timeStop) {
+        clearInterval(shit);
+      } else {
+        console.log(time);
+        console.log(that.data.timeLeft);
+        time = time - 1;
+        that.setData({
+          timeLeft: time - 1
+        });
+        
+        rander();
+      }
+    }
     wx.startRecord({
       success: function (res) {
         var tempFilePath = res.tempFilePath;
@@ -48,9 +94,13 @@ Page({
       //结束录音  
       wx.stopRecord()
     }, 600000)
+    //animation of the countdown
+    
+    
   },
   stopRecording: function () {
-    wx.stopRecord()
+    wx.stopRecord();
+    timeStop = true;
   },
   playRecording: function () {
     wx.playVoice({
@@ -79,8 +129,8 @@ Page({
    */
   onLoad: function (options) {
     // countdown(this);
-    var that = this;
-    move(that);
+    // var that = this;
+    // move(that);
   },
 
   /**
@@ -107,45 +157,7 @@ Page({
     //   //获取绘制行为， 就相当于你想做到菜context.getActions()就是食材
     //   actions: context.getActions(),
     //  },
-    var that = this;
-    var cxt_arc = wx.createContext();
-    var endAngle = that.data.endAngle;
-    var xAngle = that.data.xAngle;
-    var templeAngle = that.data.startAngle;
-    var rander = function () {
-      if (templeAngle >= endAngle) {
-        return;
-      } else if (templeAngle + xAngle > endAngle) {
-        templeAngle = endAngle;
-      } else {
-        templeAngle += xAngle
-      }
-      cxt_arc.beginPath();
-      cxt_arc.setStrokeStyle('red')
-      cxt_arc.arc(187, 110, 50, that.data.startAngle, templeAngle);
-      cxt_arc.stroke();
-      cxt_arc.closePath();
-      wx.drawCanvas({
-        canvasId: 'countDown',
-        actions: cxt_arc.getActions()
-      })
-      
-
-      // requestAnimationFrame(rander);
-    }
-    var time = 60;
-    var shit = setInterval(runTime, 100);
-    function runTime() {
-      if (time == 0) {
-        clearInterval(shit);
-      } else {
-        time=time -1;
-        that.setData({
-          timeLeft: time -1
-        })
-        rander();
-      }
-    }
+    
    
   },
 

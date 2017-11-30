@@ -9,6 +9,32 @@
   box-sizing: border-box;
 } 
 
+.navbar-bottom {
+  display:flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150rpx;
+  justify-content: space-around;
+}
+
+.navbar-item {
+  height: 150rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: muli;
+  font-size: 15px;
+  color:#2E2926;
+}
+
+.navbar-icon {
+  height: 60rpx;
+  width: 60rpx;
+  margin-bottom:15rpx;
+}
+
 
 @font-face {
     font-family: 'Muli';
