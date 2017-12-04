@@ -34,6 +34,9 @@
   width:50%;
   margin: 20rpx;
   font-family: muli;
+  opacity: 0%;
+  border: 1px solid #FF9300;
+  color: 2E2926;
 }
 
 .button-box {
@@ -53,4 +56,5 @@
 .page-container {
   position:relative;
   height: 100vh;
+  background-color: #F6F6F6;
 }

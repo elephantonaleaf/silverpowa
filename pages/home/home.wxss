@@ -18,5 +18,7 @@
 .button-primary {
   margin-top:120rpx;
   opacity: 0%;
-  border: 2px solid #00988D;
+  font-family: muli;
+  color: #f6f6f6;
+  background-color:#9BC53D;
 }

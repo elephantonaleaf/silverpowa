@@ -1,66 +1,59 @@
-// pages/my_likes/my_likes.js
+const qiniuUploader = require("../../utils/qiniuUploader");
+//index.js
+
+// 初始化七牛相关参数
+function initQiniu() {
+  var options = {
+    region: 'ECN', // 华东区
+    uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:t1BkGo6uRo3VrJ8s7Xm_I_IMJBQ=:eyJzY29wZSI6InNpbHZhcG93YTpteS1ydWJ5LWxvZ28ucG5nIiwiZGVhZGxpbmUiOjE1MTIxMzYxODcsInVwaG9zdHMiOlsiaHR0cDovL3VwLnFpbml1LmNvbSIsImh0dHA6Ly91cGxvYWQucWluaXUuY29tIiwiLUggdXAucWluaXUuY29tIGh0dHA6Ly8xODMuMTMxLjcuMTgiXSwiZ2xvYmFsIjpmYWxzZX0=',
+    // uptoken: 'xxxx',
+    domain: 'http://p07x6aqq9.bkt.clouddn.com',
+    shouldUseQiniuFileName: false
+  };
+  qiniuUploader.init(options);
+}
+
+//获取应用实例
+var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    imageObject: {}
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  //事件处理函数
+  onLoad: function () {
+    console.log('onLoad')
+    var that = this;
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  didPressChooesImage: function () {
+    var that = this;
+    didPressChooesImage(that);
   }
-})
+});
+
+function didPressChooesImage(that) {
+  initQiniu();
+  // 微信 API 选文件
+  wx.chooseImage({
+    count: 1,
+    success: function (res) {
+      var filePath = res.tempFilePaths[0];
+      // 交给七牛上传
+      qiniuUploader.upload(filePath, (res) => {
+        that.setData({
+          'imageObject': res
+        });
+      }, (error) => {
+        console.error('error: ' + JSON.stringify(error));
+      }
+        // , {
+        //     region: 'ECN', // 华东区
+        //     uptokenURL: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:t1BkGo6uRo3VrJ8s7Xm_I_IMJBQ=:eyJzY29wZSI6InNpbHZhcG93YTpteS1ydWJ5LWxvZ28ucG5nIiwiZGVhZGxpbmUiOjE1MTIxMzYxODcsInVwaG9zdHMiOlsiaHR0cDovL3VwLnFpbml1LmNvbSIsImh0dHA6Ly91cGxvYWQucWluaXUuY29tIiwiLUggdXAucWluaXUuY29tIGh0dHA6Ly8xODMuMTMxLjcuMTgiXSwiZ2xvYmFsIjpmYWxzZX0=',
+        //     domain: 'http://p07x6aqq9.bkt.clouddn.com',
+        //     shouldUseQiniuFileName: false,
+        //     key: 'testKeyNameLSAKDKASJDHKAS'
+        // }
+      );
+      console.log(that.data.imageObject)
+    }
+  })
+}

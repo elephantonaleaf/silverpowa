@@ -2,7 +2,7 @@
   <view class="topics">
     <picker mode="selector" range="{{array}}" 
       value="{{index}}" bindchange="listenerPickerSelected">
-      <text>{{array[index]}}</text>
+      <text style="font-family: muli; font-color:FF9300;">{{array[index]}}</text>
     </picker>
   </view>
   <view class="timer"> 
