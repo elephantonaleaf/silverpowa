@@ -9,13 +9,24 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="mic">
             <g id="XMLID_55_">
-                <mask id="mask-2" fill="white">
-                    <use xlink:href="#path-1"></use>
-                </mask>
-                <use id="Mask" fill="#E55934" fill-rule="nonzero" xlink:href="#path-1"></use>
-                <g opacity="0.19" mask="url(#mask-2)" id="XMLID_139_" fill-rule="nonzero" fill="#070808">
-                    <g transform="translate(49.000000, 27.000000)">
-                        <polygon points="19.8 0.5 85.1 51.8 82.6 105.8 37.9 103.9 0.8 75 19.2 69.3"></polygon>
+                <g id="Mask" fill-rule="nonzero" fill="#FF9300">
+                    <circle id="path-1" cx="66.2" cy="66.6" r="66.2"></circle>
+                </g>
+                <g id="XMLID_139_-Clipped">
+                    <g>
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="path-1"></g>
+                        <g id="XMLID_139_" opacity="0.19" mask="url(#mask-2)">
+                            <g transform="translate(49.000000, 27.000000)" id="Group">
+                                <g>
+                                    <g id="Shape" fill-rule="nonzero" fill="#4B5454">
+                                        <polygon points="19.8 0.5 85.1 51.8 82.6 105.8 37.9 103.9 0.8 75 19.2 69.3"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
                     </g>
                 </g>
             </g>
@@ -24,7 +35,7 @@
             <path d="M57.4,53.2 L79.8,53.2 L79.8,69.5 C79.8,69.5 80,78.8 68.6,78.8 C56.7,78.8 57.4,69.5 57.4,69.5 L57.4,53.2 L57.4,53.2 Z" id="XMLID_274_" fill="#FFFFFF" fill-rule="nonzero"></path>
             <rect id="XMLID_265_" fill="#FFFFFF" fill-rule="nonzero" x="66.6" y="84.2" width="3.7" height="11.5"></rect>
             <path d="M49.8,102 L87.9,102 C87.9,102 70,86 49.8,102 Z" id="XMLID_256_" fill="#FFFFFF" fill-rule="nonzero"></path>
-            <path d="M74.6,54.8 L77.7,54.8 L77.7,69 C77.7,69 76.8,77.1 69.1,77.2 C69.1,77.2 73.8,74.8 74.5,69.2 L74.6,54.8 Z" id="XMLID_253_" fill="#E55934" fill-rule="nonzero"></path>
+            <path d="M74.6,54.8 L77.7,54.8 L77.7,69 C77.7,69 76.8,77.1 69.1,77.2 C69.1,77.2 73.8,74.8 74.5,69.2 L74.6,54.8 Z" id="XMLID_253_" fill="#FF9300" fill-rule="nonzero"></path>
         </g>
     </g>
 </svg>

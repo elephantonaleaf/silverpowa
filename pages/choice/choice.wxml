@@ -5,7 +5,7 @@
   </view>
     
   <view class="choice">
-    <image class="round-button" src="../../imgs/earphone_blue.svg" bindtap='list'></image>
+    <image class="round-button" src="../../imgs/earphone_green.svg" bindtap='list'></image>
     <text style="font-family: 'Muli';font-size:30px; color: #442329">Listen</text>
   </view>
 

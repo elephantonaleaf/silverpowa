@@ -3,7 +3,7 @@
 </view>
 <view>
   <view class="card">
-    <image class="userinfo-avatar" src="../../imgs/ned.jpeg"></image>
+    <image bindtap="playSound" class="userinfo-avatar" src="../../imgs/ned.jpeg"></image>
     <view>
       <text style="font-weight: bold">Ned Stark</text>
       <text style="font-size: 15px">\nWhy I fail as king's hand</text>

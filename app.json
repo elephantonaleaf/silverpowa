@@ -13,7 +13,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "find someone to talk to",
+    "navigationBarTitleText": "Storify your life",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {

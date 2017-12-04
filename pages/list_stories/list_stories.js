@@ -1,5 +1,19 @@
 // pages/list_stories/list_stories.js
 Page({
+  playSound: function() {
+    console.log('开始播放')
+
+    const innerAudioContext = wx.createInnerAudioContext()
+    innerAudioContext.autoplay = true
+    innerAudioContext.src = 'http://p07x6aqq9.bkt.clouddn.com/stars.mp3'
+    innerAudioContext.onPlay(() => {
+      console.log('开始播放')
+    })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
+  },
 
   /**
    * 页面的初始数据
