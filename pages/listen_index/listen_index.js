@@ -1,20 +1,11 @@
-// pages/choice/choice.js
+// pages/listen_index/listen_index.js
 Page({
-  record: function () {
-    wx.navigateTo({
-      url: '../recording/recording'
-    })
-  },
-  list: function () {
-    wx.navigateTo({
-      url: '../list_stories/list_stories'
-    })
-  },
+
   /**
    * 页面的初始数据
    */
   data: {
-  
+    array: [{ message: 'foo' }, { message: 'bar' }]
   },
 
   /**

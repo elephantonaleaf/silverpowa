@@ -1,34 +1,38 @@
 {
-  "pages":[
+  "pages": [
+    "pages/users/users",    
     "pages/home/home",
     "pages/index/index",
     "pages/choice/choice",
-    "pages/list_stories/list_stories",   
+    "pages/list_stories/list_stories",
     "pages/logs/logs",
     "pages/recording_confim/recording_confirm",
     "pages/my_likes/my_likes",
     "pages/my_stories/my_stories",
-    "pages/recording/recording"
+    "pages/recording/recording",
+    "pages/listen_index/listen_index", 
+    "pages/topic/topic"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "Storify your life",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#a9b7b7",
     "borderStyle": "black",
-    "list":[{
-      "pagePath": "pages/my_likes/my_likes",
-      "iconPath": "imgs/like.jpeg",
-      "text": "My likes"
-    },
-    {
-      "pagePath": "pages/my_stories/my_stories",
-      "iconPath": "imgs/book.png",
-      "text": "My Stories"
-    }
+    "list": [
+      {
+        "pagePath": "pages/my_likes/my_likes",
+        "iconPath": "imgs/like.jpeg",
+        "text": "My likes"
+      },
+      {
+        "pagePath": "pages/my_stories/my_stories",
+        "iconPath": "imgs/book.png",
+        "text": "My Stories"
+      }
     ]
   }
 }

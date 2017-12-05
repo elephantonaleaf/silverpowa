@@ -35,7 +35,6 @@
   margin-bottom:15rpx;
 }
 
-
 @font-face {
     font-family: 'Muli';
     src: url('Muli-Regular.eot');
