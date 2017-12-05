@@ -1,37 +1,77 @@
-//app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
+    // WX code
+    let app = this;
+    // wx.checkSession({
+    //   success: function() {
+    //     console.log("success, has account")
+    //   },
+    //   fail: function() {
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+      success: function (res) {
+        console.log(res)
+        if (res.code) {
+          //发起网络请求
+          app.getUserInfo(function (userInfo) {
+            // console.log(userInfo)
 
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
+            // openid  用户的唯一标识
+            // nickname  用户昵称
+            // sex 用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
+            // province  用户个人资料填写的省份
+            // city  普通用户个人资料填写的城市
+            // country 国家，如中国为CN
+            // headimgurl  用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。
+            // privilege 用户特权信息，json 数组，如微信沃卡用户为（chinaunicom）
+            try {
+              wx.setStorageSync('userInfo', userInfo)
+              console.log("stored user information")
+            } catch (e) {
+              console.log("couldn't set storage for avatar")
             }
+            wx.request({
+              success: function (res) {
+                try {
+                  wx.setStorageSync('token', res.data.authentication_token)
+                  wx.setStorageSync('currentUserId', res.data.id)
+                } catch (e) {
+                  console.log("Didn't set storage")
+                }
+              },
+
+              url: 'https://seeme.shanghaiwogeng.com/api/v1/users',
+              method: "post",
+              data: {
+                code: res.code,
+                user: {
+                  avatar: userInfo.avatarUrl,
+                  nickname: userInfo.nickName,
+                  language: userInfo.language,
+                  gender: userInfo.gender
+                }
+              }
+            })
           })
+        } else {
+          console.log('error' + res.errMsg)
         }
       }
     })
+  },
+  getUserInfo: function (cb) {
+    var that = this
+    if (this.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      //调用登录接口
+      wx.getUserInfo({
+        // withCredentials: false,
+        success: function (res) {
+          that.globalData.userInfo = res.userInfo
+          typeof cb == "function" && cb(that.globalData.userInfo)
+        }
+      })
+    }
   },
   globalData: {
     userInfo: null
