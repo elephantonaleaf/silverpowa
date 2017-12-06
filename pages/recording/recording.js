@@ -115,11 +115,31 @@ Page({
     timeStop = true;
   },
   playRecording: function () {
-    wx.playVoice({
-      filePath: filePath,
-      complete: function () {
+    wx.downloadFile({
+      url: 'http://p07x6aqq9.bkt.clouddn.com/testvoice.silk', //仅为示例，并非真实的资源
+      success: function (res) {
+        filePath = res.tempFilePath;
+        console.log(res);
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        if (res.statusCode === 200) {
+          console.log(res.tempFilePath)
+          wx.playVoice({
+            filePath: filePath,
+            success: function () {
+              console.log(res.tempFilePath);
+            },
+            fail: function() {
+              console.log("i failed")
+            }
+          })
+        }
       }
     })
+    // wx.playVoice({
+    //   filePath: filePath,
+    //   complete: function () {
+    //   }
+    // })
   },
   saveRecording: function () {
     initQiniu();
