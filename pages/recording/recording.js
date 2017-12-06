@@ -90,7 +90,7 @@ Page({
         that.setData({
           timeLeft: time - 1
         });
-        
+
         rander();
       }
     }
@@ -105,10 +105,10 @@ Page({
       }
     })
     setTimeout(function () {
-      //结束录音  
+      //结束录音
       wx.stopRecord()
-    }, 600000)    
-    
+    }, 600000)
+
   },
   stopRecording: function () {
     wx.stopRecord();
@@ -122,8 +122,10 @@ Page({
     })
   },
   saveRecording: function () {
+
     initQiniu();
     qiniuUploader.upload(filePath, (res) => {
+      console.log(res)
       that.setData({
         'imageObject': res
       });
@@ -138,6 +140,44 @@ Page({
         key: 'testvoice.silk'
       }
     );
+    var token = wx.getStorageSync('token')
+    var input = e.detail.value
+
+    wx.request({
+      url: "http://localhost:3000/api/v1/recordings", //仅为示例，并非真实的接口地址
+      method: 'POST',
+      data: {
+        "recording": {
+          "user_id": input.user_id,
+          "content": input.content,
+          "topic": input.topic,
+          "created_at": input.created_at
+        }
+      },
+      header: {
+        'Content-Type': 'application/json',
+        'X-User-Token': token
+      },
+      success: function (res) {
+        try {
+          wx.setStorageSync('topic', res.data.topic),
+          wx.setStorageSync('content', res.data.content)
+            wx.showToast({
+              title: '🎉 Uploaded! 🎉',
+              icon: 'success',
+              duration: 3000
+            })
+          wx.reLaunch({
+            url: '../profile/profile'
+          })
+          // wx.setStorageSync('token', res.data.interests)
+        } catch (e) {
+          console.log("Didn't set storage")
+        }
+
+      }
+    })
+
   },
   listenerPickerSelected: function (e) {
     //改变index值，通过setData()方法重绘界面
@@ -145,16 +185,16 @@ Page({
       index: e.detail.value
     });
   },
-  
+
   /**
    * 页面的初始数据
    */
   data: {
     array: ['Pick a topic you want to talk about',
-      'Whats your childhood like', 
-      'How did you maintein your marriage relationship', 
-      'How did you educate your son', 
-      'How did you educate your grandson', 
+      'Whats your childhood like',
+      'How did you maintein your marriage relationship',
+      'How did you educate your son',
+      'How did you educate your grandson',
       'How did you make your career choice'
     ],
     index: 0,
@@ -184,14 +224,14 @@ Page({
   onReady: function () {
     // var context = wx.createContext();
 
-    // //第二步绘制这里我们绘制个矩形 
+    // //第二步绘制这里我们绘制个矩形
     // //x, y, widht, height
     // context.rect(50, 50, 100);
     // //绘制的样式进行描边绘制，fill为填充位置
     // context.stroke();
     // /**
     //  *  调用wx.drawCanvas，通过canvasId指定在哪张画布上绘制，通过actions指定绘制行为
-    //  * 
+    //  *
     //  *    注意convasId可以为数字表示也可以用字符串表示，就是一个绘制对象的标识，并且可以指定多个
     //  *    actions 是从context上下文中获取的绘制行为，即为第二步操作
     //  */
@@ -202,49 +242,49 @@ Page({
     //   //获取绘制行为， 就相当于你想做到菜context.getActions()就是食材
     //   actions: context.getActions(),
     //  },
-    
-   
+
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })
