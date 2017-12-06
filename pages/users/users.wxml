@@ -18,7 +18,7 @@
           <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
         </view>
       </navigator>
-        <view class="textnlikes">
+        <view class="textnlikes" bindtap="clickButton">
         <view class="text">
           <text style="font-weight: bold">{{story.topic}}</text>
         </view>

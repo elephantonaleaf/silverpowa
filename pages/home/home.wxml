@@ -1,6 +1,6 @@
 <view class="container">
-  <image class="logo" background-size="cover" src="../../imgs/logo01.svg"></image>
+  <image class="logo" background-size="cover" src="../../imgs/bonfire_logo.svg"></image>
   <text style="font-size: 35px; color: #FF9300; font-family: muli">Bonfire</text>
-  <text style="font-size: 15px; color: #FF9300; margin-top: 15rpx; font-family:muli">The best place to share my stories</text>
+  <text style="font-size: 15px; color: #665b54; margin-top: 15rpx; font-family:muli">The best place to share my stories</text>
   <button class="button-primary" bindtap="clickButton">Share now</button>
 </view>

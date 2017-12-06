@@ -131,7 +131,7 @@
 /* CSS design by @jofpin */
 
 .body {
-  background-color: #ff9300;
+  background-color: #FDFDFD;
   padding: 0.23em;
 }
 
@@ -255,7 +255,7 @@
 .recording {
   display: flex;
   padding: 4px;
-  background-color: cadetblue;
+  background-color: #FDBABA;
   border-radius: 10px;
   margin: 20px;
   border-style: solid;
