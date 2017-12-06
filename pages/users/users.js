@@ -1,6 +1,10 @@
 // pages/users/users.js.js
 Page({
-
+  clickButton: function () {
+    wx.navigateTo({
+      url: '../playing/playing'
+    })
+  },
   /**
    * 页面的初始数据
    */
@@ -67,7 +71,7 @@ Page({
     let stories = {}
 
     wx.request({
-      url: 'http://2e5cec31.ngrok.io/api/v1/recordings',
+      url: 'http://silvapowa.herokuapp.com/api/v1/recordings',
       data: {topic: topic}, 
       success: (res) => {
         let stories = res.data
@@ -92,7 +96,7 @@ Page({
   onReady: function () {
     let that = this
     wx.request({
-      url: 'http://2e5cec31.ngrok.io/api/v1/recordings',
+      url: 'http://silvapowa.herokuapp.com/api/v1/recordings',
       success: (res) => {
         let stories = res.data
         that.setData({ stories: stories })
