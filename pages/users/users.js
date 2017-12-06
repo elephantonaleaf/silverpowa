@@ -1,22 +1,28 @@
-// pages/choice/choice.js
+// pages/users/users.js.js
 Page({
-  record: function () {
-    wx.navigateTo({
-      url: '../recording/recording'
-    })
-  },
-  list: function () {
-    wx.navigateTo({
-      url: '../list_stories/list_stories'
-    })
-  },
+
   /**
    * 页面的初始数据
    */
   data: {
-  
+    array: [
+      'How my childhood was',
+      'How I managed my marriage',
+      'How I brought up my children',
+      'My best memory',
+      'A place I like',
+      'A person who changed me',
+      'One regret I have',
+      'My earliest memory',
+      'How I met my partner'
+    ],
   },
-
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

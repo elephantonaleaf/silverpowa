@@ -6,7 +6,6 @@ Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
-    userAvatar: {}
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -56,8 +55,5 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  },
-  onPullDownRefresh: function(){
-    wx.stopPullDownRefresh()
-  },
+  }
 })

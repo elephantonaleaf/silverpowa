@@ -1,27 +1,23 @@
+<!--pages/users/users.js.wxml-->
 <view class="body">
-  <view class="user-profile">
-    <view style="text-align:center">
-      <image class="avatar-md" src="../../imgs/ned.jpeg" alt="Ash" />
-    </view>
-    <view>
-      <text style="font-size:30px; color:#ff9300 ">Granpa Wang</text>
-    </view>
-    <view class="data">
-      <span class="entypo-heart">12 tracks</span>
-      <span class="entypo-eye">7 comments</span>
-    </view>
+  <view class="section">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        Choose topic
+        {{array[index]}}
+      </view>
+    </picker>
   </view>
-
   <view class="recordings">
     
     <view class="recording">
       <view class="avatar-mic">
-        <image class="speaker" src="../../imgs/ned.jpeg" alt="Ash" />
+        <image class="speaker" src="../../imgs/karl.jpeg" alt="Ash" />
         <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
       </view>
         <view class="textnlikes">
         <view class="text">
-          <text style="font-weight: bold">My best memory</text>
+          <text style="font-weight: bold">One regret I have</text>
         </view>
         <view class="likes">
           <image class="avatar-sm" src="../../imgs/tywin.jpeg" alt="Ash" />
@@ -34,12 +30,12 @@
   
     <view class="recording">
       <view class="avatar-mic">
-        <image class="speaker" src="../../imgs/ned.jpeg" alt="Ash" />
+        <image class="speaker" src="../../imgs/gandalf.jpeg" alt="Ash" />
         <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
       </view>
         <view class="textnlikes">
         <view class="text">
-          <text style="font-weight: bold">How I met my spouse</text>
+          <text style="font-weight: bold">One regret I have</text>
         </view>
         <view class="likes">
           <image class="avatar-sm" src="../../imgs/albus.jpeg" alt="Ash" />
@@ -53,12 +49,12 @@
 
     <view class="recording">
       <view class="avatar-mic">
-        <image class="speaker" src="../../imgs/ned.jpeg" alt="Ash" />
+        <image class="speaker" src="../../imgs/tywin.jpeg" alt="Ash" />
         <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
       </view>
         <view class="textnlikes">
         <view class="text">
-          <text style="font-weight: bold">A place I often go</text>
+          <text style="font-weight: bold">One regret I have</text>
         </view>
         <view class="likes">
           <image class="avatar-sm" src="../../imgs/karl.jpeg" alt="Ash" />
@@ -70,4 +66,3 @@
   
   </view>
 </view>
-  
