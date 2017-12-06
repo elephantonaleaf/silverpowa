@@ -12,7 +12,7 @@
     </view>
   </view>
 
-  <view class="recordings">
+  <view class="recordings" wx:for="{{stories}}" wx:for-item="story">
     
     <view class="recording">
       <view class="avatar-mic">
@@ -21,49 +21,10 @@
       </view>
         <view class="textnlikes">
         <view class="text">
-          <text style="font-weight: bold">My best memory</text>
+          <text style="font-weight: bold">{{story.topic}}</text>
         </view>
-        <view class="likes">
-          <image class="avatar-sm" src="../../imgs/tywin.jpeg" alt="Ash" />
-          <image class="avatar-sm" src="../../imgs/albus.jpeg" alt="Ash" />
-          <image class="avatar-sm comment" src="../../imgs/chat.png" alt="Ash" />
-        </view>
-      </view>
-    </view>
-  
-  
-    <view class="recording">
-      <view class="avatar-mic">
-        <image class="speaker" src="../../imgs/ned.jpeg" alt="Ash" />
-        <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
-      </view>
-        <view class="textnlikes">
-        <view class="text">
-          <text style="font-weight: bold">How I met my spouse</text>
-        </view>
-        <view class="likes">
-          <image class="avatar-sm" src="../../imgs/albus.jpeg" alt="Ash" />
-          <image class="avatar-sm" src="../../imgs/karl.jpeg" alt="Ash" />
-          <image class="avatar-sm" src="../../imgs/tywin.jpeg" alt="Ash" />
-          <image class="avatar-sm comment" src="../../imgs/chat.png" alt="Ash" />
-        </view>
-      </view>
-    </view>
-
-
-    <view class="recording">
-      <view class="avatar-mic">
-        <image class="speaker" src="../../imgs/ned.jpeg" alt="Ash" />
-        <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
-      </view>
-        <view class="textnlikes">
-        <view class="text">
-          <text style="font-weight: bold">A place I often go</text>
-        </view>
-        <view class="likes">
-          <image class="avatar-sm" src="../../imgs/karl.jpeg" alt="Ash" />
-          <image class="avatar-sm" src="../../imgs/gandalf.jpeg" alt="Ash" />
-          <image class="avatar-sm comment" src="../../imgs/chat.png" alt="Ash" />
+        <view class="likes" wx:for="{{story.listeners}}" >
+          <image class="avatar-sm" src="{{item.avatar}}" alt="Ash" />
         </view>
       </view>
     </view>

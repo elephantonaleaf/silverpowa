@@ -19,7 +19,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    stories: [
+      { 
+        topic: 'How my childhood was',
+        content: '#',
+        listeners: [
+          { avatar: '../../imgs/tywin.jpeg' },
+          { avatar: '../../imgs/albus.jpeg' },
+          { avatar: '../../imgs/chat.png' }
+        ]
+      },  
+      {
+        topic: 'How I managed my marriage', content: '#',
+        listeners: [
+          { avatar: '../../imgs/karl.jpeg' },
+          { avatar: '../../imgs/gandalf.jpeg' },
+          { avatar: '../../imgs/chat.png' }
+        ] },
+      {
+        topic: 'How I brought up my children', content: '#',
+        listeners: [
+          { avatar: '../../imgs/albus.jpeg' },
+          { avatar: '../../imgs/karl.jpeg' },
+          { avatar: '../../imgs/tywin.jpeg' },
+          { avatar: '../../imgs/chat.png' }
+        ] 
+      },
+    ],
   },
 
   /**
@@ -33,7 +59,18 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+   let that = this
+   wx.request({
+     url: 'http://localhost:3000/api/v1/recordings',
+     data: {user: 3},
+     success: (res) => {
+        let stories = res.data
+        that.setData({stories: stories})
+     },
+     fail: (error) => {
+        // log the error
+     }
+   })
   },
 
   /**
