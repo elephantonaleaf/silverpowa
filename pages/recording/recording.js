@@ -4,10 +4,10 @@ const qiniuUploader = require("../../utils/qiniuUploader");
 function initQiniu() {
   var options = {
     region: 'ECN', // 华东区
-    uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:Bbn9SQVHweohOwa2sLl_AWoTrzI=:eyJzY29wZSI6InNpbHZhcG93YTp0ZXN0dm9pY2Uuc2lsayIsImRlYWRsaW5lIjoxNTEyNjE3NDM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
+    uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:O3-vvlrJEGCnKK4jrpaHcOPOFc4=:eyJzY29wZSI6InNpbHZhcG93YSIsImRlYWRsaW5lIjoxNTEyNjM1MjM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
     domain: 'http://p07x6aqq9.bkt.clouddn.com',
-    shouldUseQiniuFileName: false,
-    key: 'testvoice.silk'
+    shouldUseQiniuFileName: true,
+    // key: 'test.silk'
   };
   qiniuUploader.init(options);
 }
@@ -115,31 +115,26 @@ Page({
     timeStop = true;
   },
   playRecording: function () {
-    wx.downloadFile({
-      url: 'http://p07x6aqq9.bkt.clouddn.com/testvoice.silk', //仅为示例，并非真实的资源
-      success: function (res) {
-        filePath = res.tempFilePath;
-        console.log(res);
-        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-        if (res.statusCode === 200) {
-          console.log(res.tempFilePath)
-          wx.playVoice({
-            filePath: filePath,
-            success: function () {
-              console.log(res.tempFilePath);
-            },
-            fail: function() {
-              console.log("i failed")
-            }
-          })
-        }
-      }
-    })
-    // wx.playVoice({
-    //   filePath: filePath,
-    //   complete: function () {
+    // wx.downloadFile({
+    //   url: 'http://p07x6aqq9.bkt.clouddn.com/FuR9fPPXRh6VeMtGa13ogdAvbao4', //仅为示例，并非真实的资源
+    //   success: function (res) {
+    //     console.log("imhere")
+    //     // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+    //     if (res.statusCode === 200) {
+    //       wx.playVoice({
+    //         filePath: res.tempFilePath,
+    //         success: function () {
+    //           console.log("imhere")
+    //         }
+    //       })
+    //     }
     //   }
     // })
+    wx.playVoice({
+      filePath: filePath,
+      complete: function () {
+      }
+    })
   },
   saveRecording: function () {
 
@@ -154,10 +149,10 @@ Page({
     }
       , {
         region: 'ECN', // 华东区
-        uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:Bbn9SQVHweohOwa2sLl_AWoTrzI=:eyJzY29wZSI6InNpbHZhcG93YTp0ZXN0dm9pY2Uuc2lsayIsImRlYWRsaW5lIjoxNTEyNjE3NDM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
+        uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:O3-vvlrJEGCnKK4jrpaHcOPOFc4=:eyJzY29wZSI6InNpbHZhcG93YSIsImRlYWRsaW5lIjoxNTEyNjM1MjM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
         domain: 'http://p07x6aqq9.bkt.clouddn.com',
-        shouldUseQiniuFileName: false,
-        key: 'testvoice.silk'
+        shouldUseQiniuFileName: true,
+        // key: 'test.silk'
       }
     );
     var token = wx.getStorageSync('token')
