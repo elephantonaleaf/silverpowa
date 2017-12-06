@@ -1,6 +1,6 @@
 .container {
   
-  background-color: white;
+  background-color: #FDFDFD;
 }
 .content {
   display: flex;
@@ -9,9 +9,9 @@
 
 
 .logo {
-  width: 400rpx;
-  height: 400rpx;
-  margin: 20rpx;
+  width: 300rpx;
+  height: 300rpx;
+  margin: 80rpx;
   border-radius: 50%;
 }
 
@@ -20,5 +20,5 @@
   opacity: 0%;
   font-family: muli;
   color: white;
-  background-color:#8ACE36;
+  background-color:#ab00ce;
 }
