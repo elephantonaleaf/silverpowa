@@ -20,7 +20,7 @@
     <button class="button-md" bindtap="startRecording">Start</button>
     <button class="button-md" bindtap="stopRecording">Stop</button>
     <button class="button-md" bindtap="playRecording">Play</button>
-    <button class="button-md" bindtap="playRecording">Save</button>
+    <button class="button-md" bindtap="saveRecording">Save</button>
   </view>
   
   <view class="navbar-bottom">

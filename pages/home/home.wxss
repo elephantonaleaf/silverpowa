@@ -1,6 +1,6 @@
 .container {
   
-  background-color: #F6F6F6;
+  background-color: white;
 }
 .content {
   display: flex;
@@ -19,6 +19,6 @@
   margin-top:120rpx;
   opacity: 0%;
   font-family: muli;
-  color: #f6f6f6;
-  background-color:#9BC53D;
+  color: white;
+  background-color:#8ACE36;
 }

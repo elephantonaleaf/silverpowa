@@ -36,7 +36,7 @@
   font-family: muli;
   opacity: 0%;
   border: 1px solid #FF9300;
-  color: 2E2926;
+  color: #FF9300;
 }
 
 .button-box {
