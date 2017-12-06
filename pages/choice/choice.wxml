@@ -9,18 +9,6 @@
     <text style="font-family: 'Muli';font-size:30px; color: #442329">Listen</text>
   </view>
 
-  <view class="navbar-bottom">
-    <view class="navbar-item">
-      <image class="navbar-icon" src="../../imgs/book.svg"></image>
-      <text>My Stories</text>
-    </view>
-    <view class="navbar-item">
-      <image class="navbar-icon" src="../../imgs/star.svg"></image>
-      <text>My likes</text>
-    </view>
-    <view class="navbar-item">
-      <image class="navbar-icon" src="../../imgs/setting.svg"></image>
-      <text>Settings</text>
-    </view>
-  </view>
+  <!-- <include src="../../components/navbar.wxml" /> -->
+
 </view>

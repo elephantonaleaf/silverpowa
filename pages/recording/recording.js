@@ -136,9 +136,10 @@ Page({
       }
     })
   },
-  saveRecording: function () {
+  saveRecording: function (e) {
 
     initQiniu();
+
     qiniuUploader.upload(filePath, (res) => {
       console.log(res)
       that.setData({
@@ -156,41 +157,45 @@ Page({
       }
     );
     var token = wx.getStorageSync('token')
-    var input = e.detail.value
+    // var input = e.detail.value
 
-    wx.request({
-      url: "http://localhost:3000/api/v1/recordings", //仅为示例，并非真实的接口地址
-      method: 'POST',
-      data: {
-        "recording": {
-          "user_id": input.user_id,
-          "content": input.content,
-          "topic": input.topic,
-          "created_at": input.created_at
-        }
-      },
-      header: {
-        'Content-Type': 'application/json',
-        'X-User-Token': token
-      },
-      success: function (res) {
-        try {
-          wx.setStorageSync('topic', res.data.topic),
-          wx.setStorageSync('content', res.data.content)
-            wx.showToast({
-              title: '🎉 Uploaded! 🎉',
-              icon: 'success',
-              duration: 3000
-            })
-          wx.reLaunch({
-            url: '../profile/profile'
-          })
-          // wx.setStorageSync('token', res.data.interests)
-        } catch (e) {
-          console.log("Didn't set storage")
-        }
+    // wx.request({
+    //   url: "http://localhost:3000/api/v1/recordings", //仅为示例，并非真实的接口地址
+    //   method: 'POST',
+    //   data: {
+    //     "recording": {
+    //       "user_id": input.user_id,
+    //       "content": input.content,
+    //       "topic": input.topic,
+    //       "created_at": input.created_at
+    //     }
+    //   },
+    //   header: {
+    //     'Content-Type': 'application/json',
+    //     'X-User-Token': token
+    //   },
+    //   success: function (res) {
+    //     try {
+    //       wx.setStorageSync('topic', res.data.topic),
+    //       wx.setStorageSync('content', res.data.content)
+    //         wx.showToast({
+    //           title: '🎉 Uploaded! 🎉',
+    //           icon: 'success',
+    //           duration: 3000
+    //         })
+    //       wx.reLaunch({
+    //         url: '../thankyou/thankyou'
+    //       })
+    //       // wx.setStorageSync('token', res.data.interests)
+    //     } catch (e) {
+    //       console.log("Didn't set storage")
+    //     }
 
-      }
+    //   }
+    // })
+
+    wx.redirectTo({
+      url: '/pages/thankyou/thankyou'
     })
 
   },
@@ -205,7 +210,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: ['Pick a topic you want to talk about',
+    array: ['Pick a topic',
       'Whats your childhood like',
       'How did you maintein your marriage relationship',
       'How did you educate your son',

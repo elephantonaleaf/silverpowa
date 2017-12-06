@@ -1,2 +1,4 @@
 <!--pages/playing/playing.wxml-->
-<text>pages/playing/playing.wxml</text>
+  <view class="button-box">
+    <button class="button-md" bindtap="pauseAudio">Pause</button>
+  </view>

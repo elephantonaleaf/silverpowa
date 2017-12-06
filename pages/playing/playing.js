@@ -1,13 +1,9 @@
 // pages/playing/playing.js
 Page({
 
-  },
   /**
    * 页面的初始数据
    */
-  data: {
-  
-  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -21,6 +17,12 @@ Page({
    */
   onReady: function () {
   
+    wx.playBackgroundAudio({
+      dataUrl: 'http://p0juu2tk1.bkt.clouddn.com/dombrance.mp3',
+      title: '',
+      coverImgUrl: ''
+    })
+
   },
 
   /**

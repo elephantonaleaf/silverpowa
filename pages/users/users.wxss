@@ -1,14 +1,25 @@
+.container {
+  padding: 0px;
+  position: relative;
+  height: 100vh;
+  justify-content: flex-start;
+  background:#F6F6F6;
+}
+
 .section__title {
   text-align: center;
 }
 .picker {
   text-align: center;
   background-color: white;
-  border-style: solid;
-  border-width: 1px;
-  border-color: black;
-  border-radius: 7px;
-  height: 3em;
+  border-radius: 5px;
+  padding:10px;
+  margin:5px 0px 0px 0px;
+  font-family:muli;
+  opacity:0%;
+  border:1px solid #FF9300;
+  color:#FF9300;
+  
 }
 /* CSS design by @jofpin */
 
@@ -255,11 +266,9 @@
 .recording {
   display: flex;
   padding: 4px;
-  background-color: #FDBABA;
+  background-color: #F6DCDD;
   border-radius: 10px;
   margin: 20px;
-  border-style: solid;
-  border-width: 1px;
 }
 
 .textnlikes {
@@ -267,6 +276,9 @@
 }
 .text {
   padding: 8px;
+  font-size:18px;
+  color:#665b54;
+  font-family:muli;
 }
 .likes {
   display: inline;
