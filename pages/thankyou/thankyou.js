@@ -1,15 +1,6 @@
-// pages/choice/choice.js
+// pages/thankyou/thankyou.js
 Page({
-  record: function () {
-    wx.navigateTo({
-      url: '../recording/recording'
-    })
-  },
-  list: function () {
-    wx.navigateTo({
-      url: '../users/users'
-    })
-  },
+
   /**
    * 页面的初始数据
    */
