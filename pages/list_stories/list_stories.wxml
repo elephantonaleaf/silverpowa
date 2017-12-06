@@ -5,6 +5,7 @@
     </view>
     <view>
       <text style="font-size:30px; color:#ff9300 ">Granpa Wang</text>
+      <!-- <text style="font-size:15px">Follow</text> -->
     </view>
     <view class="data">
       <span class="entypo-heart">12 tracks</span>
