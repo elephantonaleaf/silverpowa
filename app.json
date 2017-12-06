@@ -6,12 +6,8 @@
     "pages/choice/choice",
     "pages/list_stories/list_stories",
     "pages/logs/logs",
-    "pages/recording_confim/recording_confirm",
     "pages/my_likes/my_likes",
-    "pages/my_stories/my_stories",
-    "pages/recording/recording",
-    "pages/listen_index/listen_index", 
-    "pages/topic/topic"
+    "pages/recording/recording"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -26,7 +26,7 @@
 				{
 					"id": 0,
 					"name": "首页启动",
-					"pathName": "pages/topic/topic",
+					"pathName": "pages/recording/recording",
 					"query": ""
 				}
 			]
