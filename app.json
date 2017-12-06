@@ -7,7 +7,8 @@
     "pages/list_stories/list_stories",
     "pages/logs/logs",
     "pages/my_likes/my_likes",
-    "pages/recording/recording"
+    "pages/recording/recording",
+    "pages/thankyou/thankyou"
   ],
   "window": {
     "backgroundTextStyle": "light",

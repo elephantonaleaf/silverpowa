@@ -65,10 +65,19 @@ Page({
     let topic = e.detail.value
 //Call api to get stories with topic
     let stories = {}
-    this.setData({
-      index: e.detail.value,
-      stories: stories
+
+    wx.request({
+      url: 'http://2e5cec31.ngrok.io/api/v1/recordings',
+      data: {topic: topic}, 
+      success: (res) => {
+        let stories = res.data
+        that.setData({ stories: stories })
+      },
+      fail: (error) => {
+        // log the error
+      }
     })
+   
   },
   /**
    * 生命周期函数--监听页面加载
@@ -81,8 +90,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    let that = this
+    wx.request({
+      url: 'http://2e5cec31.ngrok.io/api/v1/recordings',
+      success: (res) => {
+        let stories = res.data
+        that.setData({ stories: stories })
+      },
+      fail: (error) => {
+        // log the error
+      }
+    })
   },
+
 
   /**
    * 生命周期函数--监听页面显示

@@ -8,13 +8,16 @@
       </view>
     </picker>
   </view>
+      <view class="section__title">My friends</view>
+
   <view class="recordings" wx:for="{{stories}}" wx:for-item="story">
-    
     <view class="recording">
-      <view class="avatar-mic">
-        <image class="speaker" src="{{story.user.avatar}}" alt="Ash" />
-        <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
-      </view>
+      <navigator url="/pages/list_stories/list_stories" class="button-md">
+        <view class="avatar-mic">
+          <image class="speaker" src="{{story.user.avatar}}" alt="Ash" />
+          <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
+        </view>
+      </navigator>
         <view class="textnlikes">
         <view class="text">
           <text style="font-weight: bold">{{story.topic}}</text>

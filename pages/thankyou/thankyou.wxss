@@ -1,0 +1,22 @@
+/* pages/thankyou/thankyou.wxss */
+.page-container {
+  position:relative;
+  height: 100vh;
+  background-color: #F6F6F6;
+}
+
+.button-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-md {
+    width:50%;
+  margin: 20rpx;
+  font-family: muli;
+  opacity: 0%;
+  border: 1px solid #FF9300;
+  color: 2E2926;
+}

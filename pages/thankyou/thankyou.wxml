@@ -1,0 +1,10 @@
+<!--pages/thankyou/thankyou.wxml-->
+<view class="page-container">
+  <view class="ok">
+    <text>Recording OK ! </text>
+  </view>
+
+<view class="button-box">
+  <navigator url="/pages/choice/choice" class="button-md">Jump to new page</navigator>
+</view>
+</view>
