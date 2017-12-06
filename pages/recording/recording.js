@@ -1,3 +1,16 @@
+const qiniuUploader = require("../../utils/qiniuUploader");
+
+// 初始化七牛相关参数
+function initQiniu() {
+  var options = {
+    region: 'ECN', // 华东区
+    uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:Bbn9SQVHweohOwa2sLl_AWoTrzI=:eyJzY29wZSI6InNpbHZhcG93YTp0ZXN0dm9pY2Uuc2lsayIsImRlYWRsaW5lIjoxNTEyNjE3NDM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
+    domain: 'http://p07x6aqq9.bkt.clouddn.com',
+    shouldUseQiniuFileName: false,
+    key: 'testvoice.silk'
+  };
+  qiniuUploader.init(options);
+}
 //this is what i tried to count down the numbers
 // function countdown(that) {
 //   var second = that.data.second
@@ -18,7 +31,7 @@
 // }
 var filePath;
 var timeStop = false;
-
+var app = getApp();
 //this is what i was testing a moving bar
 // function move(that) {
 //   var w = 1;
@@ -85,6 +98,7 @@ Page({
       success: function (res) {
         var tempFilePath = res.tempFilePath;
         filePath = res.tempFilePath;
+        console.log(filePath);
       },
       fail: function (res) {
         //录音失败
@@ -93,9 +107,7 @@ Page({
     setTimeout(function () {
       //结束录音  
       wx.stopRecord()
-    }, 600000)
-    //animation of the countdown
-    
+    }, 600000)    
     
   },
   stopRecording: function () {
@@ -108,6 +120,24 @@ Page({
       complete: function () {
       }
     })
+  },
+  saveRecording: function () {
+    initQiniu();
+    qiniuUploader.upload(filePath, (res) => {
+      that.setData({
+        'imageObject': res
+      });
+    }, (error) => {
+      console.error('error: ' + JSON.stringify(error));
+    }
+      , {
+        region: 'ECN', // 华东区
+        uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:Bbn9SQVHweohOwa2sLl_AWoTrzI=:eyJzY29wZSI6InNpbHZhcG93YTp0ZXN0dm9pY2Uuc2lsayIsImRlYWRsaW5lIjoxNTEyNjE3NDM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
+        domain: 'http://p07x6aqq9.bkt.clouddn.com',
+        shouldUseQiniuFileName: false,
+        key: 'testvoice.silk'
+      }
+    );
   },
   listenerPickerSelected: function (e) {
     //改变index值，通过setData()方法重绘界面
@@ -135,7 +165,8 @@ Page({
     // 结束角度
     endAngle: 3 / 2 * Math.PI,
     // 偏移角度
-    xAngle: Math.PI / 30
+    xAngle: Math.PI / 30,
+    voiceObject: {}
   },
 
   /**
