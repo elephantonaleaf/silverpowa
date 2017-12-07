@@ -5,6 +5,6 @@
   </view>
 
 <view class="button-box">
-  <navigator url="/pages/choice/choice" class="button-md">Jump to new page</navigator>
+  <navigator url="/pages/choice/choice" class="button-md" open-type="reLaunch">Jump to new page</navigator>
 </view>
 </view>

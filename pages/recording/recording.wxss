@@ -30,6 +30,26 @@
   display: block;
 }
 
+.btn {
+  position:relative;
+display:block;
+margin-left:auto;
+margin-right:auto;
+padding-left:14px;
+padding-right:14px;
+box-sizing:border-box;
+font-size:18px;
+text-align:center;
+text-decoration:none;
+line-height:2.55555556;
+border-radius:5px;
+-webkit-tap-highlight-color:transparent;
+overflow:hidden;
+color:#000000;
+background-color:#F8F8F8;
+
+}
+
 .button-md {
   width:50%;
   margin: 20rpx;
@@ -37,6 +57,14 @@
   opacity: 0%;
   border: 1px solid #FF9300;
   color: #FF9300;
+}
+
+.btn-primary {
+  margin-top:120rpx;
+opacity:0%;
+font-family:muli;
+color:white;
+background-color:#ab00ce;
 }
 
 .button-box {

@@ -1,7 +1,7 @@
 /* CSS design by @jofpin */
 
 .body {
-  background-color: #ff9300;
+  background-color: #f6f6f6;
   padding: 0.23em;
 }
 
@@ -9,7 +9,6 @@
 .user-profile {
   margin: auto;
 	width: 100%; 
-  background: #fff;
   border-radius: .3em;
   display: block;
   text-align: center;
@@ -17,11 +16,8 @@
 
 .user-profile  .username {
   margin: auto;
-  margin-top: -4.40em;
-  margin-left: 5.80em;
-  color: #658585;
-  font-size: 1.53em;
-  font-family: "Coda", sans-serif;
+  font-size:30px; 
+  color:#AB00CE;
   font-weight: bold;
 }
 
@@ -41,19 +37,11 @@
 .user-profile .data {
 	margin: 0 auto;
 	padding: 7px;
-  background: #4eb6b6;
   display: flex;
+  color: #777;
   border-radius: 0 0 .3em .3em;
   justify-content: space-evenly;
 
-}
-
-.user-profile span {
-	font-family: "varela round", sans-serif;
-	color: #e3eeee;
-  white-space: nowrap;
-  font-size: 1.27em;
-  font-weight: bold;
 }
 
 .topnav {
@@ -109,8 +97,7 @@
 
 
 .speaker {
-  padding: .7em;
-  margin-left: .3em;
+  margin-left: .4em;
   margin-top: .3em;
   margin-bottom: -29px;
   border-radius: 50%;
@@ -118,18 +105,16 @@
   width: 3em;
 }
 
-.recordings {
+.r.recordings {
   padding: 5px;
 }
 
 .recording {
   display: flex;
   padding: 4px;
-  background-color: cadetblue;
+  background-color: #F6DCDD;
   border-radius: 10px;
   margin: 20px;
-  border-style: solid;
-  border-width: 1px;
 }
 
 .textnlikes {
@@ -137,9 +122,15 @@
 }
 .text {
   padding: 8px;
+  font-size:18px;
+  color:#665b54;
+  font-family:muli;
 }
-.likes {
+.like {
   display: inline;
+}
+.text, .likes {
+  padding: 8px;
 }
 
 .comment {
@@ -147,9 +138,10 @@
 }
 
 .avatar-md {
-  height: 6em;
-  width: 6em;
-  border-radius: 50%;
+height:4em;
+width:4em;
+border-radius:50%;
+margin-top:25px;
 }
 
 .avatar-sm {

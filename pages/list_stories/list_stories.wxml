@@ -4,7 +4,7 @@
       <image class="avatar-md" src="../../imgs/ned.jpeg" alt="Ash" />
     </view>
     <view>
-      <text style="font-size:30px; color:#ff9300 ">Granpa Wang</text>
+      <text class="username">Granpa Wang</text>
     </view>
     <view class="data">
       <span class="entypo-heart">12 tracks</span>
@@ -23,8 +23,10 @@
         <view class="text">
           <text style="font-weight: bold">{{story.topic}}</text>
         </view>
-        <view class="likes" wx:for="{{story.listeners}}" >
-          <image class="avatar-sm" src="{{item.avatar}}" alt="Ash" />
+        <view class="likes">
+          <view class="like" wx:for="{{story.listeners}}" >
+            <image class="avatar-sm" src="{{item.avatar}}" alt="Ash" />
+          </view>
         </view>
       </view>
     </view>
