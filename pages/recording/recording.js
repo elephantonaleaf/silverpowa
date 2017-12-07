@@ -1,58 +1,64 @@
 const qiniuUploader = require("../../utils/qiniuUploader");
 
-// 初始化七牛相关参数
+const options = {
+  region: 'ECN', // 华东区
+  uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:O3-vvlrJEGCnKK4jrpaHcOPOFc4=:eyJzY29wZSI6InNpbHZhcG93YSIsImRlYWRsaW5lIjoxNTEyNjM1MjM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
+  domain: 'http://p07x6aqq9.bkt.clouddn.com',
+  shouldUseQiniuFileName: true,
+  // key: 'test.silk'
+};
+
 function initQiniu() {
-  var options = {
-    region: 'ECN', // 华东区
-    uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:O3-vvlrJEGCnKK4jrpaHcOPOFc4=:eyJzY29wZSI6InNpbHZhcG93YSIsImRlYWRsaW5lIjoxNTEyNjM1MjM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
-    domain: 'http://p07x6aqq9.bkt.clouddn.com',
-    shouldUseQiniuFileName: true,
-    // key: 'test.silk'
-  };
   qiniuUploader.init(options);
 }
-//this is what i tried to count down the numbers
-// function countdown(that) {
-//   var second = that.data.second
-//   if (second == 0) {
-//     // console.log("Time Out...");
-//     that.setData({
-//       second: "Time Out..."
-//     });
-//     return;
-//   }
-//   var time = setTimeout(function () {
-//     that.setData({
-//       second: second - 1
-//     });
-//     countdown(that);
-//   }
-//     , 1000)
-// }
+
 var filePath;
 var timeStop = false;
 var app = getApp();
-//this is what i was testing a moving bar
-// function move(that) {
-//   var w = 1;
-//   var id = setInterval(frame, 100);
-//   function frame() {
-//     if (w >= 100) {
-//       clearInterval(id);
-//     } else {
-//       w++;
-//       that.setData({
-//         width: w + '%'
-//       })
-//     }
-//   }
-// }
+
+
 Page({
+  data: {
+    
+    array: ['Pick a topic',
+      'How my childhood was',
+      'How I managed my marriage',
+      'How I brought up my children',
+      'My best memory',
+      'A place I like',
+      'A person who changed me',
+      'One regret I have',
+      'My earliest memory',
+      'How I met my partner'
+    ],
+    index: 0,
+    width: 1,
+    timeLeft: 60,
+    startAngle: -(1 / 2 * Math.PI),
+    endAngle: 3 / 2 * Math.PI,
+    xAngle: Math.PI / 30,
+    voiceObject: {}
+  },
   startRecording: function () {
     var that = this;
+    console.log("recording....")
+    // RECORDING
+    wx.startRecord({
+      success: function (res) {
+        var tempFilePath = res.tempFilePath;
+        filePath = res.tempFilePath;
+        console.log(filePath);
+      },
+      fail: function (res) {
+        //录音失败
+        console.log("failure");
+      }
+    })
+
     that.setData({
       timeLeft: 60
     });
+    
     var cxt_arc = wx.createContext();
     var endAngle = that.data.endAngle;
     var xAngle = that.data.xAngle;
@@ -80,6 +86,7 @@ Page({
     }
     var time = 60;
     var shit = setInterval(runTime, 1000);
+
     function runTime() {
       if (time == 0 || timeStop) {
         clearInterval(shit);
@@ -94,16 +101,6 @@ Page({
         rander();
       }
     }
-    wx.startRecord({
-      success: function (res) {
-        var tempFilePath = res.tempFilePath;
-        filePath = res.tempFilePath;
-        console.log(filePath);
-      },
-      fail: function (res) {
-        //录音失败
-      }
-    })
     setTimeout(function () {
       //结束录音
       wx.stopRecord()
@@ -136,67 +133,66 @@ Page({
       }
     })
   },
+  
   saveRecording: function (e) {
 
+    // FIRST, SAVE THE SOUND FILE (.SILK) TO QINIU
     initQiniu();
-
+    console.log("**************QINIU**************")
+    var that = this
     qiniuUploader.upload(filePath, (res) => {
-      console.log(res)
       that.setData({
         'imageObject': res
       });
+      var recording = {
+          "user_id": app.globalData.currentUserId,
+          "content": that.data.imageObject.imageURL,
+          "topic": that.data.array[that.data.index]
+      }
+      var token = wx.getStorageSync('token')
+      // SECOND, POST THE RECORD ON THE BACKEND
+      console.log(recording)
+      wx.request({
+        url: "http://172.16.96.74:3000/api/v1/recordings", //仅为示例，并非真实的接口地址
+        method: 'POST',
+        data: {
+          recording
+        },
+        header: {
+          'Content-Type': 'application/json',
+          'X-User-Token': token
+        },
+        success: function (res) {
+          try {
+            wx.setStorageSync('topic', res.data.topic),
+              wx.setStorageSync('content', res.data.content)
+
+            wx.showToast({
+              title: '🎉 Uploaded! 🎉',
+              icon: 'success',
+              duration: 3000,
+              complete: function() {
+                setTimeout(function() {
+                  wx.reLaunch({
+                    url: '../choice/choice'
+                  })
+                },2000)
+              }
+            })
+      
+          } catch (e) {
+            console.log("Didn't set storage")
+          }
+
+        }
+      })      
+
     }, (error) => {
       console.error('error: ' + JSON.stringify(error));
-    }
-      , {
-        region: 'ECN', // 华东区
-        uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:O3-vvlrJEGCnKK4jrpaHcOPOFc4=:eyJzY29wZSI6InNpbHZhcG93YSIsImRlYWRsaW5lIjoxNTEyNjM1MjM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
-        domain: 'http://p07x6aqq9.bkt.clouddn.com',
-        shouldUseQiniuFileName: true,
-        // key: 'test.silk'
-      }
+    }, options
     );
-    var token = wx.getStorageSync('token')
-    // var input = e.detail.value
 
-    // wx.request({
-    //   url: "http://localhost:3000/api/v1/recordings", //仅为示例，并非真实的接口地址
-    //   method: 'POST',
-    //   data: {
-    //     "recording": {
-    //       "user_id": input.user_id,
-    //       "content": input.content,
-    //       "topic": input.topic,
-    //       "created_at": input.created_at
-    //     }
-    //   },
-    //   header: {
-    //     'Content-Type': 'application/json',
-    //     'X-User-Token': token
-    //   },
-    //   success: function (res) {
-    //     try {
-    //       wx.setStorageSync('topic', res.data.topic),
-    //       wx.setStorageSync('content', res.data.content)
-    //         wx.showToast({
-    //           title: '🎉 Uploaded! 🎉',
-    //           icon: 'success',
-    //           duration: 3000
-    //         })
-    //       wx.reLaunch({
-    //         url: '../thankyou/thankyou'
-    //       })
-    //       // wx.setStorageSync('token', res.data.interests)
-    //     } catch (e) {
-    //       console.log("Didn't set storage")
-    //     }
-
-    //   }
-    // })
-
-    wx.redirectTo({
-      url: '/pages/thankyou/thankyou'
-    })
+  
 
   },
   listenerPickerSelected: function (e) {
@@ -205,30 +201,6 @@ Page({
       index: e.detail.value
     });
   },
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    array: ['Pick a topic',
-      'Whats your childhood like',
-      'How did you maintein your marriage relationship',
-      'How did you educate your son',
-      'How did you educate your grandson',
-      'How did you make your career choice'
-    ],
-    index: 0,
-    width: 1,
-    timeLeft: 60,
-    // 开始角度
-    startAngle: -(1 / 2 * Math.PI),
-    // 结束角度
-    endAngle: 3 / 2 * Math.PI,
-    // 偏移角度
-    xAngle: Math.PI / 30,
-    voiceObject: {}
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */

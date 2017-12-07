@@ -1,19 +1,5 @@
 // pages/users/users.js.js
 Page({
-
-  clickButton: function () {
-
-    this.audioCtx = wx.createAudioContext('myAudio')
-    this.audioCtx.setSrc('http://p0juu2tk1.bkt.clouddn.com/dombrance.mp3')
-    this.audioCtx.play()
-
-    // wx.navigateTo({
-    //   url: '../playing/playing'
-    // })
-  },
-  /**
-   * 页面的初始数据
-   */
   data: {
     array: [
       'How my childhood was',
@@ -53,17 +39,26 @@ Page({
     ])
   },
 
+  clickButton: function () {
+
+    this.audioCtx = wx.createAudioContext('myAudio')
+    // this.audioCtx.setSrc('http://p0juu2tk1.bkt.clouddn.com/dombrance.mp3')
+    this.audioCtx.play()
+    console.log("sound playing")
+  },
+
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     let topic = e.detail.value
 //Call api to get stories with topic
     let stories = {}
+    let that = this
 
     wx.request({
-      url: 'http://silvapowa.herokuapp.com/api/v1/recordings',
+      url: 'http://172.16.96.74:3000/api/v1/recordings',
       data: {topic: topic}, 
       success: (res) => {
-        let stories = res.data
+        let stories = res.data.reverse()
         that.setData({ stories: stories })
       },
       fail: (error) => {
@@ -72,33 +67,19 @@ Page({
     })
    
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     let that = this
     wx.request({
-      url: 'http://silvapowa.herokuapp.com/api/v1/recordings',
+      url: 'http://172.16.96.74:3000/api/v1/recordings',
       success: (res) => {
         console.log(res)
-        let stories = res.data
+        let stories = res.data.reverse()
         that.setData({ stories: stories })
       },
       fail: (error) => {
         // log the error
       }
-    })
-    wx.request({
-      url: 'http://silvapowa.herokuapp.com/api/v1/users',
-      success: (res) => {
-        console.log(res)
-        let users = res.data
-        that.setData({ users: users })
-      },
-      fail: (error) => {
-        // log the error
-      }
-    })
+    })    
   },
 
   /**

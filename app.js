@@ -1,31 +1,50 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-    
+    let app = this;
     // 登录
+
     wx.login({
       success: function (res) {
         if (res.code) {
+          console.log(res.code)
           //发起网络请求
-          // wx.request({
-          //   url: 'http://localhost:3000/api/v1/users',
-          //   method: "post",
-          //   data: {
-          //     code: res.code,
-          //     user: {
-          //       picture: "aaaaaa"
-          //     }
-          //   }
-          // })
+          app.getUserInfo(function (userInfo) {
+            // console.log(userInfo)
+            try {
+              wx.setStorageSync('userInfo', userInfo)
+              console.log("stored user information")
+            } catch (e) {
+              console.log("couldn't set storage for avatar")
+            }
+            wx.request({
+              url: 'http://172.16.96.74:3000/api/v1/users',
+              method: "post",
+              data: {
+                code: res.code,
+                user: {
+                  avatar: userInfo.avatarUrl,
+                  nickname: userInfo.nickName,
+                  language: userInfo.language,
+                  gender: userInfo.gender
+                }
+              },
+              success: function (res) {
+                try {
+                  wx.setStorageSync('token', res.data.authentication_token)
+                  wx.setStorageSync('currentUserId', res.data.id)
+                } catch (e) {
+                  console.log("Didn't set storage")
+                }
+              }
+            })
+          })
         } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
+          console.log('error' + res.errMsg)
         }
       }
-    });
+    })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -46,6 +65,21 @@ App({
         }
       }
     })
+  },
+  getUserInfo: function (cb) {
+    var that = this
+    if (this.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      //调用登录接口
+      wx.getUserInfo({
+        // withCredentials: false,
+        success: function (res) {
+          that.globalData.userInfo = res.userInfo
+          typeof cb == "function" && cb(that.globalData.userInfo)
+        }
+      })
+    }
   },
   globalData: {
     userInfo: null
