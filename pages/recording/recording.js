@@ -145,7 +145,7 @@ Page({
         'imageObject': res
       });
       var recording = {
-          "user_id": app.globalData.currentUserId,
+          "user_id": wx.getStorageSync('currentUserId'),
           "content": that.data.imageObject.imageURL,
           "topic": that.data.array[that.data.index]
       }
