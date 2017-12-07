@@ -60,7 +60,8 @@ Page({
 
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
-    let topic = e.detail.value
+    console.log(e)
+    let topic = this.data.array[e.detail.value]
 //Call api to get stories with topic
     let stories = {}
     let that = this

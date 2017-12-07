@@ -61,7 +61,7 @@ Page({
   onReady: function () {
    let that = this
    wx.request({
-     url: 'http://localhost:3000/api/v1/recordings',
+     url: 'https://bonfire.shanghaiwogeng.com/api/v1/recordings',
      data: {user: 3},
      success: (res) => {
         let stories = res.data
