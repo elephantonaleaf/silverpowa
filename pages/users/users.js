@@ -67,7 +67,7 @@ Page({
     let that = this
 
     wx.request({
-      url: 'http://172.16.96.74:3000/api/v1/recordings',
+      url: 'https://bonfire.shanghaiwogeng.com/api/v1/recordings',
       data: {topic: topic}, 
       success: (res) => {
         console.log(res)
@@ -83,7 +83,7 @@ Page({
   onLoad: function (options) {
     let that = this
     wx.request({
-      url: 'http://172.16.96.74:3000/api/v1/recordings',
+      url: 'https://bonfire.shanghaiwogeng.com/api/v1/recordings',
       success: (res) => {
         console.log(res)
         let stories = res.data.reverse()

@@ -21,12 +21,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
 					"name": "首页启动",
-					"pathName": "pages/users/users",
+					"pathName": "pages/recording/recording",
 					"query": ""
 				}
 			]
