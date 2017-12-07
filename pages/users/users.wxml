@@ -17,7 +17,7 @@
           <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
         </view>
       </navigator>
-        <view class="textnlikes" bindtap="playVoice">
+        <view class="textnlikes" bindtap="playVoice" id="{{idx}}">
         <view class="text">
           <text>{{story.topic}}</text>
         </view>

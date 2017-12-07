@@ -39,12 +39,23 @@ Page({
     ])
   },
 
-  clickButton: function () {
+  playVoice: function(e) {
+    let that = this
+    var id = e.currentTarget.id
+    var voice = that.data.stories[id].content
+    console.log(voice)
+    wx.downloadFile({
+      url: voice, //仅为示例，并非真实的资源
+      success: function (res) {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        if (res.statusCode === 200) {
+          wx.playVoice({
+            filePath: res.tempFilePath
+          })
+        }
+      }
+    })
 
-    this.audioCtx = wx.createAudioContext('myAudio')
-    // this.audioCtx.setSrc('http://p0juu2tk1.bkt.clouddn.com/dombrance.mp3')
-    this.audioCtx.play()
-    console.log("sound playing")
   },
 
   bindPickerChange: function (e) {
@@ -58,6 +69,7 @@ Page({
       url: 'http://172.16.96.74:3000/api/v1/recordings',
       data: {topic: topic}, 
       success: (res) => {
+        console.log(res)
         let stories = res.data.reverse()
         that.setData({ stories: stories })
       },
