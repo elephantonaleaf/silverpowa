@@ -13,19 +13,15 @@
     <view class="recording" wx:for="{{stories}}" wx:for-index="idx" wx:for-item="story" >
       <navigator url="/pages/list_stories/list_stories" class="button-md">
         <view class="avatar-mic">
-          <image class="speaker" src="{{users[idx].avatar}}" alt="Ash" />
+          <image class="speaker" src="{{story.avatar}}" alt="Ash" />
           <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
         </view>
       </navigator>
-        <view class="textnlikes" bindtap="clickButton">
+        <view class="textnlikes" bindtap="playVoice">
         <view class="text">
           <text>{{story.topic}}</text>
         </view>
-        <!-- <view class="likes" wx:for="{{story.listeners}}" >
-          <image class="avatar-sm" src="{{item.avatar}}" alt="Ash" />
-        </view> -->
       </view>
-      <audio src="{{story.audio}}" id="myAudio"></audio>
     </view>
     
   </view>
