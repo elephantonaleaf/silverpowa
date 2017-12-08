@@ -3,6 +3,7 @@
 .body {
   background-color: #f6f6f6;
   padding: 0.23em;
+  height: 100vh;
 }
 
 
@@ -119,6 +120,9 @@
 
 .textnlikes {
   width: 100%;
+  display:flex;
+align-items:center;
+
 }
 .text {
   padding: 8px;

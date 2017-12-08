@@ -11,7 +11,7 @@
 
   <view class="recordings">
     <view class="recording" wx:for="{{stories}}" wx:for-index="idx" wx:for-item="story" >
-      <!-- <navigator url="/pages/list_stories/list_stories" class="button-md"> -->
+      <navigator url="/pages/list_stories/list_stories?user_id={{story.user_id}}" class="button-md">
         <view class="avatar-mic">
           <image class="speaker" src="{{story.avatar}}" alt="Ash" />
           <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />

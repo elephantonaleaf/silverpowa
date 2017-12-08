@@ -1,14 +1,18 @@
 <view class="body">
   <view class="user-profile">
     <view style="text-align:center">
-      <image class="avatar-md" src="../../imgs/ned.jpeg" alt="Ash" />
+      <image class="avatar-md" src="{{user[0].avatar}}" alt="Ash" />
     </view>
     <view>
-      <text class="username">Granpa Wang</text>
+      <text class="username">{{user[0].nickname}}</text>
     </view>
     <view class="data">
-      <span class="entypo-heart">12 tracks</span>
-      <span class="entypo-eye">7 comments</span>
+      <view wx:if="{{stories.length < 2 }}">
+        <span class="entypo-heart">{{stories.length}} track</span>
+      </view>
+      <view wx:else>
+        <span class="entypo-heart">{{stories.length}} tracks</span>
+      </view>
     </view>
   </view>
 
@@ -16,7 +20,7 @@
     
     <view class="recording">
       <view class="avatar-mic">
-        <image class="speaker" src="../../imgs/ned.jpeg" alt="Ash" />
+        <image class="speaker" src="{{story.avatar}}" alt="Ash" />
         <image class="avatar-sm mic" src="../../imgs/mic.svg" alt="Ash" />
       </view>
         <view class="textnlikes">
