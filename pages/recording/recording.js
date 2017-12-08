@@ -2,7 +2,7 @@ const qiniuUploader = require("../../utils/qiniuUploader");
 
 const options = {
   region: 'ECN', // 华东区
-  uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:O3-vvlrJEGCnKK4jrpaHcOPOFc4=:eyJzY29wZSI6InNpbHZhcG93YSIsImRlYWRsaW5lIjoxNTEyNjM1MjM0LCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
+  uptoken: 'PJP0bjvUkPBLO3PmSgAfuVyEh9aTAlzYmiItmRCm:XSnfe9pUgMhMbLahyNKWci4Vha0=:eyJzY29wZSI6InNpbHZhcG93YSIsImRlYWRsaW5lIjoxNTEyODA1MTMwLCJ1cGhvc3RzIjpbImh0dHA6Ly91cC5xaW5pdS5jb20iLCJodHRwOi8vdXBsb2FkLnFpbml1LmNvbSIsIi1IIHVwLnFpbml1LmNvbSBodHRwOi8vMTgzLjEzMS43LjE4Il0sImdsb2JhbCI6ZmFsc2V9',
   domain: 'http://p07x6aqq9.bkt.clouddn.com',
   shouldUseQiniuFileName: true,
   // key: 'test.silk'
@@ -153,7 +153,7 @@ Page({
       // SECOND, POST THE RECORD ON THE BACKEND
       console.log(recording)
       wx.request({
-        url: "http://172.16.96.74:3000/api/v1/recordings", //仅为示例，并非真实的接口地址
+        url: "https://bonfire.shanghaiwogeng.com/api/v1/recordings", //仅为示例，并非真实的接口地址
         method: 'POST',
         data: {
           recording

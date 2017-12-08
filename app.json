@@ -6,7 +6,6 @@
     "pages/choice/choice",
     "pages/list_stories/list_stories",
     "pages/logs/logs",
-    "pages/my_likes/my_likes",
     "pages/recording/recording",
     "pages/thankyou/thankyou",
     "pages/playing/playing"
@@ -16,21 +15,6 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "Storify your life",
     "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "color": "#a9b7b7",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "pages/my_likes/my_likes",
-        "iconPath": "imgs/like.jpeg",
-        "text": "My likes"
-      },
-      {
-        "pagePath": "pages/my_stories/my_stories",
-        "iconPath": "imgs/book.png",
-        "text": "My Stories"
-      }
-    ]
   }
+  
 }

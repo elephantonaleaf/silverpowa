@@ -18,7 +18,7 @@ App({
               console.log("couldn't set storage for avatar")
             }
             wx.request({
-              url: 'http://172.16.96.74:3000/api/v1/users',
+              url: 'https://bonfire.shanghaiwogeng.com/api/v1/users',
               method: "post",
               data: {
                 code: res.code,

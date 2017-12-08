@@ -7,8 +7,9 @@
 }
 
 .section {
-  margin-top: 4px;
+  margin-top: 20rpx;
 }
+
 .section__title {
   text-align: center;
 }
