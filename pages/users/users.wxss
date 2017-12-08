@@ -6,6 +6,10 @@
   background:#F6F6F6;
 }
 
+.section {
+  margin-top: 20rpx;
+}
+
 .section__title {
   text-align: center;
 }
